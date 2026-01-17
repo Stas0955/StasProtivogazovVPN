@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>stpvpn — Пользовательское соглашение</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --orange: #ff6e20;
+      --orange-light: #ff9a55;
+      --orange-glow: #ff6e2033;
+      --bg-dark: #0a0a0f;
+      --card-bg: rgba(20, 20, 28, 0.45);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      background: var(--bg-dark);
+      color: #f2f2f8;
+      font-family: 'Inter', system-ui, sans-serif;
+      font-weight: 400;
+      line-height: 1.72;
+      font-size: 1.05rem;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    canvas#particles {
+      position: fixed;
+      inset: 0;
+      z-index: -3;
+      pointer-events: none;
+    }
+
+    .glow-bg {
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 30%, var(--orange-glow) 0%, transparent 60%);
+      opacity: 0.8;
+      z-index: -2;
+      animation: pulse 14s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 0.65; transform: scale(1); }
+      50%      { opacity: 0.95; transform: scale(1.04); }
+    }
+
+    .container {
+      position: relative;
+      max-width: 920px;
+      margin: 100px auto 140px;
+      padding: 0 20px;
+      z-index: 2;
+    }
+
+    .card {
+      background: var(--card-bg);
+      backdrop-filter: blur(22px) saturate(180%);
+      -webkit-backdrop-filter: blur(22px) saturate(180%);
+      border: 1px solid rgba(255, 110, 32, 0.14);
+      border-radius: 28px;
+      padding: 64px 72px;
+      box-shadow: 
+        0 20px 80px rgba(0,0,0,0.7),
+        inset 0 0 60px rgba(255, 110, 32, 0.05);
+      transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+      transform: translateY(20px);
+      opacity: 0;
+      animation: appear 1.2s forwards 0.4s;
+    }
+
+    @keyframes appear {
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    .card:hover {
+      transform: translateY(-12px);
+      box-shadow: 
+        0 40px 120px rgba(255, 110, 32, 0.18),
+        inset 0 0 90px rgba(255, 110, 32, 0.08);
+    }
+
+    h1 {
+      font-size: 3.2rem;
+      font-weight: 800;
+      background: linear-gradient(90deg, #ff9a55, #ff6e20, #ff9a55);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-align: center;
+      margin-bottom: 1rem;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      text-shadow: 0 6px 30px rgba(255, 110, 32, 0.4);
+    }
+
+    .date {
+      text-align: center;
+      color: #9ca3af;
+      font-size: 1rem;
+      font-weight: 400;
+      margin: 0 0 4rem;
+      letter-spacing: 0.03em;
+    }
+
+    h2 {
+      font-size: 1.85rem;
+      font-weight: 700;
+      color: var(--orange-light);
+      margin: 3.8rem 0 1.4rem;
+      position: relative;
+    }
+
+    h2::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 70px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--orange), var(--orange-light));
+      border-radius: 3px;
+      opacity: 0.7;
+    }
+
+    p {
+      margin-bottom: 1.6rem;
+      color: #d9d9e3;
+    }
+
+    strong {
+      color: #ffbb88;
+      font-weight: 600;
+    }
+
+    a {
+      color: var(--orange-light);
+      text-decoration: none;
+      transition: all 0.25s ease;
+    }
+
+    a:hover {
+      color: #ffd0a0;
+      text-shadow: 0 0 12px rgba(255, 154, 85, 0.6);
+    }
+
+    ul {
+      list-style: none;
+      margin: 1.6rem 0 2rem;
+      padding-left: 1.8rem;
+    }
+
+    ul li {
+      position: relative;
+      margin-bottom: 1.1rem;
+      padding-left: 1.8rem;
+      color: #c8c8d5;
+    }
+
+    ul li::before {
+      content: "⚡";
+      color: var(--orange);
+      position: absolute;
+      left: 0;
+      font-size: 1.1rem;
+      line-height: 1.4;
+    }
+
+    @media (max-width: 820px) {
+      .container { margin: 80px 16px; }
+      .card { padding: 52px 40px; border-radius: 24px; }
+      h1 { font-size: 2.7rem; }
+      h2 { font-size: 1.65rem; }
+    }
+
+    @media (max-width: 500px) {
+      .card { padding: 44px 28px; }
+      h1 { font-size: 2.3rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <canvas id="particles"></canvas>
+  <div class="glow-bg"></div>
+
+  <div class="container">
+    <div class="card">
+      <h1>Пользовательское соглашение<br>stpvpn</h1>
+      <div class="date">Последнее обновление: 17 января 2026 г.</div>
+
+      <h2>1. Общие положения</h2>
+      <p>Настоящее Соглашение регулирует отношения между stpvpn и Пользователем при использовании VPN-сервиса.</p>
+      <p>Использование сервиса = полное принятие всех условий.</p>
+
+      <h2>2. Предмет Соглашения</h2>
+      <p>Предоставляем доступ к VPN на платной или тестовой основе в соответствии с настоящим документом.</p>
+
+      <h2>3. Правила использования</h2>
+      <p>Запрещено:</p>
+      <ul>
+        <li>противоправные действия</li>
+        <li>спам, фишинг, вредоносное ПО</li>
+        <li>DDoS, мошенничество</li>
+        <li>нарушение законодательства</li>
+      </ul>
+      <p>Нарушение → мгновенная блокировка без возврата.</p>
+
+      <h2>4. Конфиденциальность</h2>
+      <p>Строгая <strong>no-logs</strong> политика. Ничего не храним: ни сайты, ни DNS, ни IP, ни трафик.</p>
+
+      <h2>5. Ограничение ответственности</h2>
+      <p>Сервис «как есть». Не отвечаем за сбои связи, блокировки IP или любой ущерб.</p>
+
+      <h2>6. Изменения</h2>
+      <p>Можем обновлять Соглашение. Новая версия здесь. Продолжаете пользоваться — соглашаетесь.</p>
+
+      <h2>7. Связь</h2>
+      <p>support@stpvpn.com<br>
+         Telegram: <a href="https://t.me/stpvpn_support">@stpvpn_support</a></p>
+    </div>
+  </div>
+
+  <script>
+    // Простые красивые частицы (оранжевые искры/точки)
+    const canvas = document.getElementById('particles');
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    let particlesArray = [];
+    const numberOfParticles = 80;
+
+    class Particle {
+      constructor() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.size = Math.random() * 3 + 1;
+        this.speedX = Math.random() * 0.6 - 0.3;
+        this.speedY = Math.random() * 0.6 - 0.3;
+        this.opacity = Math.random() * 0.4 + 0.1;
+      }
+      update() {
+        this.x += this.speedX;
+        this.y += this.speedY;
+        if (this.x > canvas.width || this.x < 0) this.speedX *= -1;
+        if (this.y > canvas.height || this.y < 0) this.speedY *= -1;
+      }
+      draw() {
+        ctx.fillStyle = `rgba(255, 110, 32, ${this.opacity})`;
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+
+    function init() {
+      particlesArray = [];
+      for (let i = 0; i < numberOfParticles; i++) {
+        particlesArray.push(new Particle());
+      }
+    }
+
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      for (let i = 0; i < particlesArray.length; i++) {
+        particlesArray[i].update();
+        particlesArray[i].draw();
+      }
+      requestAnimationFrame(animate);
+    }
+
+    init();
+    animate();
+
+    window.addEventListener('resize', () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      init();
+    });
+  </script>
+
+</body>
+</html>
